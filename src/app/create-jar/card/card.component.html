@@ -1,6 +1,13 @@
-<mat-card [formGroup]='card'>
+<!-- <mat-card [formGroup]='card'>
     <mat-form-field>
         <mat-label>Card</mat-label>
         <input matInput formControlName='text'>
     </mat-form-field>
-</mat-card>
+</mat-card> -->
+
+
+<form [formGroup]='card'>
+    <textarea  formControlName='text'></textarea>
+    <div class="paper" contenteditable="true">
+    </div>
+</form>

@@ -2,7 +2,7 @@ import { NewCard } from "./new-card";
 
 export interface NewJar {
     "title": string,
-    'timesPerDay': number,
+    'cardsPerDay': number,
     'recipientEmail': string,
     "cards": Array<NewCard>
 }

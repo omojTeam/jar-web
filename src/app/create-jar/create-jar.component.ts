@@ -18,7 +18,7 @@ export class CreateJarComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
-      timesPerDay: [''],
+      cardsPerDay: [''],
       recipientEmail: ['', Validators.required],
       cards: new FormArray([]),
     });
@@ -39,15 +39,27 @@ export class CreateJarComponent implements OnInit {
   }
 
   onSubmit() {
+
+    const papers = document.getElementsByClassName('paper');
+    const textInputs = document.getElementsByTagName('textarea');
+    for(var x=0; x<papers.length; x++) {
+      let inputValue: String = papers[x].innerHTML;
+      inputValue = inputValue.replace(/<div>/g, "");
+      inputValue = inputValue.replace(/<\/div>/g, "\n");
+      this.c.controls[x].setValue({text: inputValue});
+    }
+
     if(this.form.invalid) return;
     const f = this.form.value;
 
     const jar: NewJar = {
       "title": f.title,
-      "timesPerDay": f.timesPerDay,
+      "cardsPerDay": f.cardsPerDay,
       "recipientEmail": f.recipientEmail,
       "cards": f.cards
     }
+
+    console.log(jar);
     this.jarService.uploadJar(jar)
     .subscribe(res => console.log(res));   
   }

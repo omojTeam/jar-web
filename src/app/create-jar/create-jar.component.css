@@ -1,7 +1,8 @@
+
 mat-card {
-    width: 60%;
-    padding: 3em;
-    margin: 6em auto;
+    padding: 1em;
+    border-radius: 6px;
+    width: 500px ;
 }
 
 form {
@@ -10,4 +11,84 @@ form {
 }
 button {
     margin: 1em 0;
+    border-radius: 6px;
+}
+button.add {
+    height: 6em;
+    margin-bottom: 2em;
+    background-color: #8FDDE7 !important;
+}
+button.submit {
+    background-color: rgb(120, 201, 120) !important;
+}
+#wrapper {
+    height: calc(100% - 80px);
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#card {
+    margin-bottom: 3em;
+    width: 420px;
+    height: 350px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+/* ANIMATIONS */
+@keyframes hide {
+    0% {
+        transform: scale(1) translate3d(0px, 0px, 0px);
+    }
+    25% {
+        transform: scale(.5) translate3d(0px, -100px, 0px);
+    }
+    75% {
+        transform: scale(.5) translate3d(0px, 800px, 0px);
+    }
+}
+@keyframes show {
+    0% {
+        transform: translateY(-1000px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes wait {
+    0% {
+        transform: translateY(-1000px);
+    }
+    100% {
+        transform: translateY(-1000px);
+    }
+}
+
+.single-card {
+    position: absolute;
+}
+
+.single-card.hide-card {
+    display: none;
+}
+
+.single-card.show-card {
+    animation-name: wait, show;
+    animation-delay: 0s, 2s;
+    animation-duration: 2s, 2s;
+}
+
+.single-card.store-card {
+    animation-name: hide;
+    animation-duration: 2s;
+    transform: scale(.5) translate3d(0px, 800px, 0px);
 }

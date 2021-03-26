@@ -15,12 +15,16 @@ import { OpenJarComponent } from './open-jar/open-jar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './create-jar/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 
 const MatModules = [
   MatCardModule,
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatToolbarModule
 ]
 
 @NgModule({
@@ -28,7 +32,8 @@ const MatModules = [
     AppComponent,
     CreateJarComponent,
     OpenJarComponent,
-    CardComponent
+    CardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

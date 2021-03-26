@@ -4,3 +4,24 @@ mat-card {
 mat-form-field {
     width: 100%;
 }
+form {
+    height: 100%;
+    width: 100%;
+}
+textarea {
+    display: none;
+}
+
+.paper {
+    width: 350px;
+    height: 300px;
+    padding: 35px;
+    background: repeating-linear-gradient(#F1EDE9, #F1EDE9 30px, #94ACD4 31px, #94ACD4 32px);
+    font-family: 'Shadows Into Light', cursive;
+    line-height: 32px;
+    outline: 0;
+    font-size: 22px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.25);
+
+
+}

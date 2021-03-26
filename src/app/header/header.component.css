@@ -1,0 +1,8 @@
+mat-toolbar {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    height: 4em;
+    z-index: 999;
+}
