@@ -18,7 +18,7 @@ export class CreateJarComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       title: ['', Validators.required],
-      cardsPerDay: [''],
+      cardsPerDay: [1, Validators.min(1)],
       recipientEmail: ['', Validators.required],
       cards: new FormArray([]),
     });

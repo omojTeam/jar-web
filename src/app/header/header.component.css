@@ -3,6 +3,10 @@ mat-toolbar {
     font-weight: bold;
     position: absolute;
     top: 0;
-    height: 4em;
+    height: 2em;
     z-index: 999;
+    font-family: 'Gochi Hand';
+    font-weight: bold;
+    font-size: 40px;
+
 }

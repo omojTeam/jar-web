@@ -10,13 +10,13 @@
         </div>
     </div>
     <mat-card>
+        <button
+            class='add'
+            mat-raised-button
+            color='primary'
+            (click)='addCard()'
+        >Add Card</button>
         <form [formGroup]='form'>
-            <button
-                class='add'
-                mat-raised-button
-                color='primary'
-                (click)='addCard()'
-            >Add Card</button>
             <mat-form-field>
                 <mat-label>Title</mat-label>
                 <input matInput formControlName="title">

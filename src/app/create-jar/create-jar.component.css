@@ -16,6 +16,7 @@ button {
 button.add {
     height: 6em;
     margin-bottom: 2em;
+    width: 100%;
     background-color: #8FDDE7 !important;
 }
 button.submit {
@@ -58,10 +59,10 @@ button.submit {
 }
 @keyframes show {
     0% {
-        transform: translateY(-1000px);
+        transform: translateY(-1000px) rotate(-20deg);
     }
     100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0);
     }
 }
 @keyframes wait {
@@ -83,8 +84,8 @@ button.submit {
 
 .single-card.show-card {
     animation-name: wait, show;
-    animation-delay: 0s, 2s;
-    animation-duration: 2s, 2s;
+    animation-delay: 0s, 0.5s;
+    animation-duration: 0.5s, 2s;
 }
 
 .single-card.store-card {

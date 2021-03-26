@@ -13,11 +13,12 @@ textarea {
 }
 
 .paper {
+    overflow: hidden;
     width: 350px;
     height: 300px;
     padding: 35px;
     background: repeating-linear-gradient(#F1EDE9, #F1EDE9 30px, #94ACD4 31px, #94ACD4 32px);
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Gochi Hand';
     line-height: 32px;
     outline: 0;
     font-size: 22px;
