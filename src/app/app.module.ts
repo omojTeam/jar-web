@@ -18,6 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+import Lottie from 'lottie-web';
+
+export function playerFactory() {
+  return player;
+}
 
 
 const MatModules = [
@@ -41,7 +48,8 @@ const MatModules = [
     BrowserAnimationsModule,
     MatModules,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LottieModule.forRoot({ player: playerFactory })
   ],
   providers: [],
   bootstrap: [AppComponent]

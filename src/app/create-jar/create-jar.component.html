@@ -3,19 +3,34 @@
         <div 
         class="single-card"
         *ngFor='let card of c.controls; let index=index'
-        [ngClass]="index==c.controls.length-1 ? 'show-card' : index==c.controls.length-2 ? 'store-card' : 'hide-card'">
+        [ngClass]="index==c.controls.length-1 ? 'show-card' : ''"
+        >
             <app-card
                 [card]='card'
             ></app-card>
         </div>
     </div>
     <mat-card>
-        <button
-            class='add'
-            mat-raised-button
-            color='primary'
-            (click)='addCard()'
-        >Add Card</button>
+        <div class="btn-row">
+            <button
+                class='next-card'
+                mat-raised-button
+                color='primary'
+                (click)='nextCard()'
+            ><</button>
+            <button
+                class='add'
+                mat-raised-button
+                color='primary'
+                (click)='addCard()'
+            >Add Card</button>            
+            <button
+                class='prev-card'
+                mat-raised-button
+                color='primary'
+                (click)='prevCard()'
+            >></button>
+        </div>
         <form [formGroup]='form'>
             <mat-form-field>
                 <mat-label>Title</mat-label>
@@ -38,3 +53,5 @@
         </form>
     </mat-card>
 </div>
+
+<!-- [ngClass]="index==c.controls.length-1 ? 'show-card' : index==c.controls.length-2 ? 'store-card' : 'hide-card'" -->

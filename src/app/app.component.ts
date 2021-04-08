@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AnimationItem } from 'lottie-web';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jar-web';
+
+  options: AnimationOptions = {
+    path: '/assets/animations/test.json'
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
+  }
 }

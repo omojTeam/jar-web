@@ -12,6 +12,8 @@ import { JarService } from '../shared/jar.service';
 export class CreateJarComponent implements OnInit {
 
   form: FormGroup;
+  private shiftDistance: number = 500;
+  private activeCard: number = 0;
 
   constructor(private fb: FormBuilder, private jarService: JarService) { }
 
@@ -36,6 +38,41 @@ export class CreateJarComponent implements OnInit {
         text: ['']
       })
     );
+    this.activeCard = 0;
+    setTimeout(function () {
+      const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+      for(var i=0; i<cards.length; i++) {
+        if(i!== 0) cards[i].style.transform = `translateX(${500*i}px)`;
+      }
+    },0);
+  }
+  
+  prevCard(): void {
+    const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+    if(this.activeCard < cards.length - 1) {
+      for(var i=0; i<cards.length; i++) {
+        let matchTransform = cards[i].style.transform.match(/(-?[0-9\.]+)/g);
+        let currentTransform = matchTransform ? parseInt(matchTransform[0]) : 0;
+        cards[i].style.transform = `translateX(${currentTransform - 500}px)`;
+      }    
+
+      this.activeCard++;
+    }
+    else console.log("LAST CARD");
+  }
+
+  nextCard(): void {
+    const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+    if(this.activeCard > 0 ) {
+      for(var i=0; i<cards.length; i++) {
+        let matchTransform = cards[i].style.transform.match(/(-?[0-9\.]+)/g);
+        let currentTransform = matchTransform ? parseInt(matchTransform[0]) : 0;
+        cards[i].style.transform = `translateX(${currentTransform + 500}px)`;
+      }    
+
+      this.activeCard--;
+    }
+    else console.log("FIRST CARD");
   }
 
   onSubmit() {
@@ -59,8 +96,16 @@ export class CreateJarComponent implements OnInit {
       "cards": f.cards
     }
 
+    const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+    for(var i=0; i<cards.length; i++) {
+      cards[i].style.transform = `translateX(0)`;
+    }
+
+    const cardsWrapper = window.top.document.getElementById('card');
+    cardsWrapper.classList.add('store-card')
+
     console.log(jar);
-    this.jarService.uploadJar(jar)
-    .subscribe(res => console.log(res));   
+    // this.jarService.uploadJar(jar)
+    // .subscribe(res => console.log(res));   
   }
 }
