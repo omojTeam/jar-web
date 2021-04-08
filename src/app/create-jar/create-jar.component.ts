@@ -105,7 +105,7 @@ export class CreateJarComponent implements OnInit {
     cardsWrapper.classList.add('store-card')
 
     console.log(jar);
-    // this.jarService.uploadJar(jar)
-    // .subscribe(res => console.log(res));   
+    this.jarService.uploadJar(jar)
+    .subscribe(res => console.log(res));   
   }
 }
