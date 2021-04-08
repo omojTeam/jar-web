@@ -14,6 +14,7 @@ export class CreateJarComponent implements OnInit {
   form: FormGroup;
   private shiftDistance: number = 500;
   private activeCard: number = 0;
+  private isSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder, private jarService: JarService) { }
 
@@ -33,6 +34,7 @@ export class CreateJarComponent implements OnInit {
   get c() {return this.f.cards as FormArray}
 
   addCard(): void {
+    if(this.isSubmitted) return;
     this.c.push(
       this.fb.group({
         text: ['']
@@ -48,6 +50,7 @@ export class CreateJarComponent implements OnInit {
   }
   
   prevCard(): void {
+    if(this.isSubmitted) return;
     const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
     if(this.activeCard < cards.length - 1) {
       for(var i=0; i<cards.length; i++) {
@@ -62,6 +65,7 @@ export class CreateJarComponent implements OnInit {
   }
 
   nextCard(): void {
+    if(this.isSubmitted) return;
     const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
     if(this.activeCard > 0 ) {
       for(var i=0; i<cards.length; i++) {
@@ -96,16 +100,20 @@ export class CreateJarComponent implements OnInit {
       "cards": f.cards
     }
 
-    const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
-    for(var i=0; i<cards.length; i++) {
-      cards[i].style.transform = `translateX(0)`;
-    }
-
-    const cardsWrapper = window.top.document.getElementById('card');
-    cardsWrapper.classList.add('store-card')
-
     console.log(jar);
     this.jarService.uploadJar(jar)
-    .subscribe(res => console.log(res));   
+    .subscribe(res => {
+      console.log(res);
+
+      const cardsWrapper = window.top.document.getElementById('card');
+      cardsWrapper.classList.add('store-card');
+
+      const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+      for(var i=0; i<cards.length; i++) {
+        cards[i].style.transform = `translateX(0)`;
+      }
+      
+      this.isSubmitted = true;
+    });   
   }
 }
