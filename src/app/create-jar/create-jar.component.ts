@@ -141,8 +141,6 @@ export class DialogSubmit {
     console.log(this.form.value);
     if(this.form.invalid || this.isSubmitted) return;
 
-    this.isSubmitted = true;
-    // if(this.form.invalid) return;
     const f = this.form.value;
     const jar: NewJar = {
       "title": f.title,
