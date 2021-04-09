@@ -18,6 +18,7 @@ body {
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     overflow: hidden;
+    background-color: #eadada;
 }
 
 .bg-primary {
@@ -26,3 +27,11 @@ body {
 .bg-accent {
     background-color: #fff2e2;
 }
+
+.mat-form-field-underline {
+    background-color: green;
+}
+/* underline border color on focused */
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+    background-color: green !important;
+  }

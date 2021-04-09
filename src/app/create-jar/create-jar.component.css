@@ -32,9 +32,39 @@ button.submit {
     flex-direction: column;
 }
 #card {
-    margin-bottom: 3em;
+    margin-bottom: 20em;
     width: 420px;
     height: 350px;
+    z-index: 99;
+}
+div#buttons {
+    position: absolute;
+    bottom: 8%;
+    z-index: 9;
+    display: flex;
+    flex-direction: row;
+    transform: scale(0.5);
+}
+div#buttons > img {
+    cursor: pointer;
+}
+div.btn-col {
+    display: flex;
+    flex-direction: column;
+}
+div#jar {
+    width: 100%;
+    bottom: -40%;
+    position: absolute;
+}
+div#jar > img {
+    width: 100%;
+}
+div#submit {
+    position: absolute;
+    bottom: 3em;
+    right: 3em;
+    cursor: pointer;
 }
 .row {
   display: flex;
@@ -92,6 +122,7 @@ button.submit {
 }
 
 .store-card {
+    z-index: 0 !important;
     animation-name: hide;
     animation-duration: 2s;
     transform: scale(.5) translate3d(0px, 800px, 0px);

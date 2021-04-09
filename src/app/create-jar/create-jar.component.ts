@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { NewJar } from '../models/new-jar';
 import { JarService } from '../shared/jar.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-jar',
@@ -16,7 +17,7 @@ export class CreateJarComponent implements OnInit {
   private activeCard: number = 0;
   private isSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private jarService: JarService) { }
+  constructor(private fb: FormBuilder, private jarService: JarService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -89,31 +90,71 @@ export class CreateJarComponent implements OnInit {
       inputValue = inputValue.replace(/<\/div>/g, "\n");
       this.c.controls[x].setValue({text: inputValue});
     }
+    
+    setTimeout(() => {this.openDialog(this.form)}, 1000);
+    
+    this.isSubmitted = true;
+  }
 
-    if(this.form.invalid) return;
+  openDialog(form: FormGroup): void {
+    const dialogRef = this.dialog.open(DialogSubmit, {
+      data: form
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result) {
+        const cardsWrapper = window.top.document.getElementById('card');
+        cardsWrapper.classList.add('store-card');
+    
+        const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
+        for(var i=0; i<cards.length; i++) {
+          cards[i].style.transform = `translateX(0)`;
+        }
+      }
+    });
+  }
+}
+
+
+
+//DIALOG
+@Component({
+  selector: 'dialog-submit',
+  templateUrl:'dialog-submit.html',
+  styleUrls: ['dialog-submit.css']
+})
+export class DialogSubmit {
+  constructor(
+    public dialogRef: MatDialogRef<DialogSubmit>,
+    @Inject(MAT_DIALOG_DATA) public form,
+    private jarService: JarService
+  ) {}
+
+  private isSubmitted:boolean = false;
+
+  onNoClick(): void {
+    
+  }
+
+  submitJar() {
+    console.log(this.form.value);
+    if(this.form.invalid || this.isSubmitted) return;
+
+    this.isSubmitted = true;
+    // if(this.form.invalid) return;
     const f = this.form.value;
-
     const jar: NewJar = {
       "title": f.title,
       "cardsPerDay": f.cardsPerDay,
       "recipientEmail": f.recipientEmail,
       "cards": f.cards
     }
-
-    console.log(jar);
+    
     this.jarService.uploadJar(jar)
     .subscribe(res => {
       console.log(res);
-
-      const cardsWrapper = window.top.document.getElementById('card');
-      cardsWrapper.classList.add('store-card');
-
-      const cards = Array.from(window.top.document.getElementsByClassName('single-card') as HTMLCollectionOf<HTMLElement>).reverse();
-      for(var i=0; i<cards.length; i++) {
-        cards[i].style.transform = `translateX(0)`;
-      }
-      
-      this.isSubmitted = true;
-    });   
+      this.dialogRef.close(true);
+    }, err => {this.isSubmitted = false;}); 
   }
 }

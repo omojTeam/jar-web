@@ -1,12 +1,18 @@
 mat-toolbar {
     color: white;
+    background-color: #5f7d95;
     font-weight: bold;
     position: absolute;
     top: 0;
+    padding: 0 2em;
     height: 2em;
     z-index: 999;
     font-family: 'Gochi Hand';
     font-weight: bold;
     font-size: 40px;
 
+}
+
+mat-toolbar > img {
+    height: 100%;
 }

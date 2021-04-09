@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateJarComponent } from './create-jar/create-jar.component';
+import { CreateJarComponent, DialogSubmit } from './create-jar/create-jar.component';
 import { OpenJarComponent } from './open-jar/open-jar.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,6 +17,7 @@ import { CardComponent } from './create-jar/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
@@ -31,7 +32,8 @@ const MatModules = [
   MatCardModule,
   MatInputModule,
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDialogModule
 ]
 
 @NgModule({
@@ -40,7 +42,8 @@ const MatModules = [
     CreateJarComponent,
     OpenJarComponent,
     CardComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogSubmit
   ],
   imports: [
     BrowserModule,

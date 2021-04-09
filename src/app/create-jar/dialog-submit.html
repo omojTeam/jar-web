@@ -1,0 +1,28 @@
+<div id="dialog">
+    <div id="left">
+        <div id="logo">
+
+        </div>
+        <h1>Submit form</h1>
+        <form [formGroup]='form'>
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Recipient Email</mat-label>
+                <input matInput formControlName="recipientEmail">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Cards per days</mat-label>
+                <input matInput type="number" formControlName="cardsPerDay">
+            </mat-form-field>
+            <div id="send">
+                <img src="/assets//images/Send.png" alt="" (click)="submitJar()">
+            </div>
+        </form>
+    </div>
+    <div id="right">
+        <img src="/assets/images/Rakieta.png" alt="">
+    </div>
+</div>
