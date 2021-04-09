@@ -11,6 +11,9 @@ div#left {
 
     padding: 4em;
 }
+div#logo > img {
+    width: 250px;
+}
 div#send {
     text-align: center;
     margin-top: 2em;
