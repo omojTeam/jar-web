@@ -14,8 +14,8 @@ textarea {
 
 .paper {
     overflow: hidden;
-    width: 350px;
-    height: 300px;
+    width: 250px;
+    height: 150px;
     padding: 35px;
     background: repeating-linear-gradient(#F1EDE9, #F1EDE9 30px, #94ACD4 31px, #94ACD4 32px);
     font-family: 'Gochi Hand';
