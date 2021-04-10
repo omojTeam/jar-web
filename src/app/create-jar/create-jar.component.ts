@@ -92,8 +92,6 @@ export class CreateJarComponent implements OnInit {
     }
     
     setTimeout(() => {this.openDialog(this.form)}, 1000);
-    
-    this.isSubmitted = true;
   }
 
   openDialog(form: FormGroup): void {
@@ -111,6 +109,8 @@ export class CreateJarComponent implements OnInit {
         for(var i=0; i<cards.length; i++) {
           cards[i].style.transform = `translateX(0)`;
         }
+            
+        this.isSubmitted = true;
       }
     });
   }
