@@ -1,0 +1,130 @@
+
+mat-card {
+    padding: 1em;
+    border-radius: 6px;
+    width: 500px ;
+}
+button {
+    margin: 1em 0;
+    border-radius: 6px;
+}
+button#btn-new-card {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    background-color: rgb(255, 129, 150);
+    color: white;
+    font-size: 30px;
+    padding: 1em;
+    border-radius: 20px;
+}
+
+#wrapper {
+    height: calc(100% - 80px);
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#card {
+    margin-bottom: 20em;
+    /* width: 420px;
+    height: 350px; */
+    width: 320px;
+    height: 150px;
+}
+div#buttons {
+    position: absolute;
+    bottom: 8%;
+    z-index: 9;
+    display: flex;
+    flex-direction: row;
+    transform: scale(0.5);
+}
+div#buttons > img {
+    cursor: pointer;
+}
+div.btn-col {
+    display: flex;
+    flex-direction: column;
+}
+div#jar {
+    width: 100%;
+    bottom: -40%;
+    position: absolute;
+}
+div#jar > img {
+    width: 100%;
+}
+div#submit {
+    position: absolute;
+    bottom: 3em;
+    right: 3em;
+    cursor: pointer;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-row {
+    display: flex;
+}
+
+
+
+/* ANIMATIONS */
+@keyframes show {
+    0% {
+        transform: scale(.5) translate3d(0px, 800px, 0px);
+    }
+    25% {
+        transform: scale(.5) translate3d(0px, -100px, 0px);
+    }
+    75% {
+        transform: scale(1) translate3d(0px, 0px, 0px);
+    }
+}
+@keyframes hide {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(-1000px) rotate(-20deg);
+    }
+}
+@keyframes wait {
+    0% {
+        transform: translateY(-1000px);
+    }
+    100% {
+        transform: translateY(-1000px);
+    }
+}
+
+.single-card {
+    position: absolute;
+    transition-duration: 0.5s;
+}
+
+.single-card.hide-card {
+    display: none;
+}
+
+.single-card.show-card {
+    animation-name: wait, show;
+    animation-delay: 0s, 0.5s;
+    animation-duration: 0.5s, 2s;
+    z-index: -99999 !important;
+    
+}
+
+.store-card {
+    z-index: 0 !important;
+    animation-name: hide;
+    animation-duration: 2s;
+    transform: translateY(-1000px) rotate(-20deg);
+}
+

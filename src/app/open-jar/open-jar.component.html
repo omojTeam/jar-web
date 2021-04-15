@@ -1,1 +1,20 @@
-<p>open-jar works!</p>
+<div id="wrapper">
+    <div id="card">
+        <div 
+        class="single-card"
+        *ngFor='let card of cards; let index=index'
+        [ngClass]="index==cards.length-1 ? 'show-card' : index==cards.length-2 ? 'store-card' : 'hide-card'"
+        >
+            <app-read-card
+                [card]='card'
+            ></app-read-card>
+        </div>
+    </div>
+    <div id="jar">
+        <img src="/assets/images/Sloik.png" alt="">
+    </div>
+
+    <button mat-raised-button id='btn-new-card' (click)="getCard()">REACH INSIDE</button>
+    <!-- <button mat-raised-button id='btn-reset-card' (click)="resetJar()">RESET JAR</button> -->
+
+</div>

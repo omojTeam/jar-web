@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import Lottie from 'lottie-web';
+import { ReadCardComponent } from './open-jar/read-card/read-card.component';
 
 export function playerFactory() {
   return player;
@@ -43,7 +44,8 @@ const MatModules = [
     OpenJarComponent,
     CardComponent,
     HeaderComponent,
-    DialogSubmit
+    DialogSubmit,
+    ReadCardComponent
   ],
   imports: [
     BrowserModule,

@@ -15,4 +15,12 @@ export class JarService {
   uploadJar(jar: NewJar) {
     return this.http.post<any>(this.serverUrl, {jar: jar});
   }
+
+  getCard(id: string) {
+    return this.http.get<any>(`${this.serverUrl}/card/${id}`);
+  }
+
+  resetJar(id: string) {
+    return this.http.get<any>(`${this.serverUrl}/reset/${id}`);
+  }
 }
