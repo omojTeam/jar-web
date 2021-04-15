@@ -7,17 +7,22 @@ mat-card {
 button {
     margin: 1em 0;
     border-radius: 6px;
-}
-button#btn-new-card {
     position: fixed;
-    bottom: 5%;
-    right: 5%;
     background-color: rgb(255, 129, 150);
     color: white;
     font-size: 30px;
     padding: 1em;
     border-radius: 20px;
+    box-shadow: 10px 10px 20px grey !important;
 }
+button#btn-new-card {
+    bottom: 5%;
+    right: 5%;
+}button#btn-reset-card {
+    right: 5%;
+    bottom: 20%;
+}
+
 
 #wrapper {
     height: calc(100% - 80px);
@@ -36,21 +41,6 @@ button#btn-new-card {
     width: 320px;
     height: 150px;
 }
-div#buttons {
-    position: absolute;
-    bottom: 8%;
-    z-index: 9;
-    display: flex;
-    flex-direction: row;
-    transform: scale(0.5);
-}
-div#buttons > img {
-    cursor: pointer;
-}
-div.btn-col {
-    display: flex;
-    flex-direction: column;
-}
 div#jar {
     width: 100%;
     bottom: -40%;
@@ -59,20 +49,6 @@ div#jar {
 div#jar > img {
     width: 100%;
 }
-div#submit {
-    position: absolute;
-    bottom: 3em;
-    right: 3em;
-    cursor: pointer;
-}
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-.btn-row {
-    display: flex;
-}
-
 
 
 /* ANIMATIONS */
