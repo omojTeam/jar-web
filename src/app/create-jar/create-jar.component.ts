@@ -109,7 +109,8 @@ export class CreateJarComponent implements OnInit {
         for(var i=0; i<cards.length; i++) {
           cards[i].style.transform = `translateX(0)`;
         }
-            
+        setTimeout(() => {this.dialog.open(DialogSuccess)}, 1500);
+
         this.isSubmitted = true;
       }
     });
@@ -118,7 +119,7 @@ export class CreateJarComponent implements OnInit {
 
 
 
-//DIALOG
+//DIALOG SUBMIT
 @Component({
   selector: 'dialog-submit',
   templateUrl:'dialog-submit.html',
@@ -155,4 +156,26 @@ export class DialogSubmit {
       this.dialogRef.close(true);
     }, err => {this.isSubmitted = false;}); 
   }
+}
+
+//DIALOG SUCCESS
+@Component({
+  selector: 'dialog-success',
+  template:'<img src="/assets/images/ThankYou_Alert.png" style="object-fit: cover; width: 100%; height: 100%;" (click)="refresh()">',
+  styleUrls: ['dialog-submit.css']
+})
+export class DialogSuccess {
+  constructor(
+    public dialogRef: MatDialogRef<DialogSubmit>,
+    @Inject(MAT_DIALOG_DATA) public form,
+    private jarService: JarService
+  ) {}
+
+  private isSubmitted:boolean = false;
+
+  refresh() {
+     window.location.reload();
+  }
+
+  
 }

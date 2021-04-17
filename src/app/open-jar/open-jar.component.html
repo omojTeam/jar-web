@@ -1,4 +1,7 @@
-<div id="wrapper">
+<div id="alert" *ngIf='status == "limit-reached"'>
+    <img src="/assets/images/DailyUse.png" alt="">
+</div>
+<div id="wrapper" *ngIf='status == "cards-ready"'>
     <div id="card">
         <div 
         class="single-card"
@@ -15,6 +18,5 @@
     </div>
 
     <button mat-raised-button id='btn-new-card' (click)="getCard()">REACH INSIDE</button>
-    <button mat-raised-button id='btn-reset-card' (click)="resetJar()">RESET JAR</button>
 
 </div>
