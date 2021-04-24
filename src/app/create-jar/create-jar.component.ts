@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { NewJar } from '../models/new-jar';
 import { JarService } from '../shared/jar.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { cardsToCardsLimit } from './validator';
 
 @Component({
   selector: 'app-create-jar',
@@ -23,9 +24,9 @@ export class CreateJarComponent implements OnInit {
     this.form = this.fb.group({
       title: ['', Validators.required],
       cardsPerDay: [1, Validators.min(1)],
-      recipientEmail: ['', Validators.required],
+      recipientEmail: ['', [Validators.email, Validators.required]],
       cards: new FormArray([]),
-    });
+    }, {validators: [cardsToCardsLimit]});
 
     this.addCard();
 
