@@ -6,6 +6,14 @@
     font-family: 'Gochi Hand';
     src: url("/assets/fonts/GochiHand-Regular.ttf");
 }
+@font-face {
+    font-family: 'Ginger';
+    src: url("/assets/fonts/ginger.ttf");
+}
+@font-face {
+    font-family: 'Segoe';
+    src: url("/assets/fonts/segoesc.ttf");
+}
 
 app-root, app-create-jar {
     display: block;
